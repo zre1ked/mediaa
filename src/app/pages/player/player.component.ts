@@ -1,4 +1,9 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -25,13 +30,30 @@ export class PlayerComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private videoService: VideoService
+    private videoService: VideoService,
+    private cdr: ChangeDetectorRef
   ) {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.videoService.getVideos().subscribe((videos) => {
-      const video = videos.find((v) => v.id === id);
-      if (video) this.videoUrl = video.url;
-      console.log('Видео URL:', this.videoUrl);
+    console.log('Полученный ID из URL:', id);
+
+    this.videoService.getVideos().subscribe({
+      next: (videos) => {
+        console.log('Полученные видео:', videos);
+        const video = videos.find((v) => {
+          return +v.id === +id;
+        });
+
+        if (video) {
+          console.log('Видео найдено:', video);
+          this.videoUrl = video.url;
+          this.cdr.detectChanges();
+        } else {
+          console.warn(`Видео с ID ${id} не найдено`);
+        }
+      },
+      error: (err) => {
+        console.error('Ошибка при получении списка видео:', err);
+      },
     });
   }
 
