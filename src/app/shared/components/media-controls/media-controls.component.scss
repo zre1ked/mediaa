@@ -1,0 +1,76 @@
+@use "../../../../styles/variables" as *;
+
+:host {
+  width: 100%;
+  max-width: 800px;
+  background: rgba($color-accent, 0.1);
+  padding: 1rem;
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transition: background $transition-speed;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+button,
+select {
+  background: $color-accent;
+  color: $color-bg;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: $border-radius;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background $transition-speed, transform $transition-speed;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 150px;
+  height: 6px;
+  background: $color-muted;
+  border-radius: $border-radius;
+  outline: none;
+  transition: background $transition-speed;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: $color-accent;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background $transition-speed;
+  }
+
+  &::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: $color-accent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background $transition-speed;
+  }
+}
+
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  input[type="range"] {
+    width: 100%;
+  }
+}

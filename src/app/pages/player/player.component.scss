@@ -1,0 +1,70 @@
+@use "../../../styles/variables" as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: $color-bg;
+  min-height: 100vh;
+  padding: 2rem;
+  color: $color-text;
+}
+
+video {
+  width: 100%;
+  max-width: 800px;
+  border: 2px solid $color-accent;
+  border-radius: $border-radius;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  video {
+    max-width: 100%;
+  }
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.video-container video {
+  width: 100%;
+  display: block;
+  border-radius: $border-radius;
+  background: #000;
+}
+
+.custom-controls {
+  position: absolute;
+  left: 0;
+  bottom: 32px;
+  width: 96.5%;
+  pointer-events: auto;
+  opacity: 1;
+  transition: opacity 0.4s;
+  z-index: 2;
+}
+
+:host ::ng-deep .custom-controls.ng-animating {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.back-button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: $color-accent;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}

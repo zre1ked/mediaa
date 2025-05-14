@@ -1,0 +1,142 @@
+@use "../../../styles/variables" as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: $color-bg;
+  min-height: 100vh;
+  padding: 2rem 0;
+  color: $color-text;
+}
+
+h1,
+h2 {
+  color: $color-accent;
+  margin-bottom: 1rem;
+}
+
+// Поиск
+.search-bar {
+  width: 100%;
+  max-width: 700px;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.search-bar input[type="text"] {
+  width: 100%;
+  max-width: 600px;
+  background: rgba($color-accent, 0.08);
+  border: 2px solid $color-accent;
+  color: $color-text;
+  padding: 0.7rem 1.2rem;
+  border-radius: $border-radius;
+  font-size: 1.1rem;
+  box-shadow: 0 1px 6px rgba($color-accent, 0.07);
+  transition: border-color $transition-speed, box-shadow $transition-speed;
+}
+
+// Форма добавления видео
+form {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+form input[formControlName] {
+  width: 100%;
+  max-width: 250px;
+  background: rgba($color-accent, 0.08);
+  border: 2px solid $color-accent;
+  color: $color-text;
+  padding: 0.7rem 1.2rem;
+  border-radius: $border-radius;
+  font-size: 1.1rem;
+  box-shadow: 0 1px 6px rgba($color-accent, 0.07);
+  transition: border-color $transition-speed, box-shadow $transition-speed;
+}
+
+form button {
+  background: $color-accent;
+  color: #fff;
+  width: 100%;
+  max-width: 150px;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  margin: 0;
+  border-radius: $border-radius;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 1px 6px rgba(0, 200, 83, 0.07);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+// Список видео
+.video-list {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.video-card {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.2rem;
+  border-radius: $border-radius;
+  background: rgba($color-accent, 0.08);
+  box-shadow: 0 1px 6px rgba($color-accent, 0.07);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background $transition-speed, box-shadow $transition-speed;
+
+  &:hover {
+    background: rgba($color-accent, 0.18);
+    box-shadow: 0 2px 12px rgba($color-accent, 0.15);
+  }
+
+  a {
+    color: $color-accent;
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color $transition-speed;
+    &:hover {
+      color: lighten($color-accent, 20%);
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  input[type="text"],
+  button,
+  div {
+    width: 100%;
+  }
+}

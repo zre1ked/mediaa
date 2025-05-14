@@ -1,0 +1,15 @@
+<div class="search-bar">
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Search videos..." />
+</div>
+
+<form [formGroup]="form" (ngSubmit)="addVideo()">
+  <input formControlName="title" placeholder="Video Title" />
+  <input formControlName="url" placeholder="Video URL" />
+  <button type="submit">Add Video</button>
+</form>
+
+<div class="video-list">
+  <div class="video-card" *ngFor="let video of filteredVideos">
+    <a [routerLink]="['/player', video.id]">{{ video.title }}</a>
+  </div>
+</div>

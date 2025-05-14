@@ -1,0 +1,34 @@
+<!-- Кнопка "Назад" -->
+<button class="back-button" routerLink="/">&larr; Назад</button>
+
+<div class="video-container">
+  <video
+    #videoElement
+    (timeupdate)="onTimeUpdate()"
+    (mousemove)="onUserActivity()"
+    (click)="onUserActivity()"
+    (play)="onUserActivity()"
+    (pause)="onUserActivity()"
+    (volumechange)="onUserActivity()"
+    (ratechange)="onUserActivity()"
+  >
+    <source [src]="videoUrl" type="video/webm" />
+    Ваш браузер не поддерживает видео.
+  </video>
+
+  <app-media-controls
+    *ngIf="showControls"
+    class="custom-controls"
+    [currentTime]="currentTime"
+    [duration]="duration"
+    [volume]="volume"
+    [playbackRate]="playbackRate"
+    [isPaused]="isPaused"
+    (playPause)="playPause()"
+    (seek)="seek($event)"
+    (volumeChange)="changeVolume($event)"
+    (rateChange)="changeRate($event)"
+    (toggleFullscreen)="toggleFullscreen()"
+    (downloadVideo)="downloadVideo()"
+  ></app-media-controls>
+</div>

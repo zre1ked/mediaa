@@ -1,0 +1,28 @@
+<div class="controls">
+  <button (click)="playPause.emit()">{{ isPaused ? "Play" : "Pause" }}</button>
+
+  <input
+    type="range"
+    [value]="currentTime"
+    [max]="duration"
+    (input)="onSeek($event)"
+  />
+
+  <input
+    type="range"
+    [value]="volume"
+    min="0"
+    max="1"
+    step="0.01"
+    (input)="onVolume($event)"
+  />
+
+  <select (change)="onRate($event)" [value]="playbackRate">
+    <option *ngFor="let speed of [0.5, 1, 1.5, 2]" [value]="speed">
+      {{ speed }}x
+    </option>
+  </select>
+
+  <button (click)="toggleFullscreen.emit()">Fullscreen</button>
+  <button (click)="downloadVideo.emit()">Download</button>
+</div>
